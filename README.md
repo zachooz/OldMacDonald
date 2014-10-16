@@ -23,7 +23,8 @@ Run the program to make sure it compiles and runs.*
 
 Once we know what it takes to be an Animal, we can define new classes for the cow, chick and pig that implement the Animal interface. Here is a Cow class meeting the minimum requirements to be an Animal.
 
-```javaclass Cow implements Animal {     
+```java
+class Cow implements Animal {     
        private String myType;     
        private String mySound;      
        public Cow(String type, String sound)     {         
@@ -43,14 +44,16 @@ Run the program to make sure it compiles and runs.
 Implement classes for the chick and the pig.
 Add the following code to your `setup()` function, and run the program to verify your work so far. Make sure you create some chick and pig instances in `setup()`and check their sounds as well.*
 
-```javapublic void setup() {     
+```java
+public void setup() {     
     Cow c = new Cow("cow", "moo");   
     System.out.println(c.getType() + " goes " + c.getSound());  }  
 }``` 
 
 *Now add the following Farm class to complete the farm and test all your animals. Make sure that it isn't inside any the curly braces of the other classes.*
 
-```javaclass Farm  {     
+```java
+class Farm  {     
    private Animal[] aBunchOfAnimals = new Animal[3];    
    public Farm()     {       
       aBunchOfAnimals[0] = new Cow("cow","moo");           
@@ -73,7 +76,8 @@ Finally, it also came to pass that the cows get a personal name, like Elsie.
 *Create a new class, `NamedCow`, that extends the Cow class, adding a constructor, a field for the Cow's name, and a new function: `getName`.*
 
 The final Farm code to exercise all your modifications is shown here:
-  ```javaclass Farm  {     
+  ```java
+  class Farm  {     
     private Animal[] aBunchOfAnimals = new Animal[3];    
     public Farm()     {       
        aBunchOfAnimals[0] = new NamedCow("cow","Elsie","moo");          
