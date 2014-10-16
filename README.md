@@ -22,7 +22,7 @@ Run the program to make sure it compiles and runs.*
 
 Once we know what it takes to be an Animal, we can define new classes for the cow, chick and pig that implement the Animal interface. Here is a Cow class meeting the minimum requirements to be an Animal.
 
-'class Cow implements Animal {     
+`class Cow implements Animal {     
      private String myType;     
      private String mySound;      
      public Cow(String type, String sound)     {         
