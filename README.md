@@ -27,21 +27,21 @@ Once we know what it takes to be an Animal, we can define new classes for the co
 ```java
 class Cow implements Animal 
 {     
-       private String myType;     
-       private String mySound;      
-       public Cow(String type, String sound)    
-       {         
-           myType = type;         
-           mySound = sound;     
-       }     
-       public Cow()    
-       {         
-           myType = "unknown";         
-           mySound = "unknown";     
-       }      
-       public String getSound(){return mySound;}     
-       public String getType(){return myType;} 
-  }
+  private String myType;     
+  private String mySound;      
+  public Cow(String type, String sound)    
+  {         
+     myType = type;         
+     mySound = sound;     
+  }     
+  public Cow()    
+  {         
+     myType = "unknown";         
+     mySound = "unknown";     
+  }      
+  public String getSound(){return mySound;}     
+  public String getType(){return myType;} 
+}
   ``` 
  
 *Add the Cow class below the closing curly brace of your Animal interface.
@@ -62,20 +62,20 @@ public void setup()
 ```java
 class Farm  
 {     
-   private Animal[] aBunchOfAnimals = new Animal[3];    
-   public Farm()     
-   {       
-      aBunchOfAnimals[0] = new Cow("cow","moo");           
-      aBunchOfAnimals[1] = new Chick("chick","cluck");       
-      aBunchOfAnimals[2] = new Pig("pig","oink");    
-   }         
-   public void animalSounds()    
-   {       
-     for (int nI=0; nI < aBunchOfAnimals.length; nI++)      
-     {          
-       System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound());       
-     }    
-    } 
+  private Animal[] aBunchOfAnimals = new Animal[3];    
+  public Farm()     
+  {       
+    aBunchOfAnimals[0] = new Cow("cow","moo");           
+    aBunchOfAnimals[1] = new Chick("chick","cluck");       
+    aBunchOfAnimals[2] = new Pig("pig","oink");    
+  }         
+  public void animalSounds()    
+  {       
+    for (int nI=0; nI < aBunchOfAnimals.length; nI++)      
+    {          
+     System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound());       
+    }    
+  } 
 }
 ``` 
 
@@ -90,23 +90,23 @@ Finally, it also came to pass that the cows get a personal name, like Elsie.
 
 The final Farm code to exercise all your modifications is shown here:
   ```java
-  class Farm 
-  {     
-    private Animal[] aBunchOfAnimals = new Animal[3];    
-    public Farm()    
-    {       
-       aBunchOfAnimals[0] = new NamedCow("cow","Elsie","moo");          
-       aBunchOfAnimals[1] = new Chick("chick","cheep","cluck");
-       aBunchOfAnimals[2] = new Pig("pig","oink");    
-    }     
-    public void animalSounds()    
-    {
-      for (int nI=0; nI < aBunchOfAnimals.length; nI++) 
-      {             
-         System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound() );       
-      }       
-         System.out.println( "The cow is known as " + ((NamedCow)aBunchOfAnimals[0]).getName() );    
-    } 
+class Farm 
+{     
+  private Animal[] aBunchOfAnimals = new Animal[3];    
+  public Farm()    
+  {       
+   aBunchOfAnimals[0] = new NamedCow("cow","Elsie","moo");          
+   aBunchOfAnimals[1] = new Chick("chick","cheep","cluck");
+   aBunchOfAnimals[2] = new Pig("pig","oink");    
+  }     
+  public void animalSounds()    
+  {
+    for (int nI=0; nI < aBunchOfAnimals.length; nI++) 
+    {             
+       System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound() );       
+    }       
+    System.out.println( "The cow is known as " + ((NamedCow)aBunchOfAnimals[0]).getName() );    
+  } 
 }
 ``` 
 
