@@ -37,7 +37,8 @@ class Cow implements Animal {
        }      
        public String getSound(){return mySound;}     
        public String getType(){return myType;} 
-  }``` 
+  }
+  ``` 
  
 *Add the Cow class below the closing curly brace of your Animal interface.
 Run the program to make sure it compiles and runs.
@@ -48,7 +49,8 @@ Add the following code to your `setup()` function, and run the program to verify
 public void setup() {     
     Cow c = new Cow("cow", "moo");   
     System.out.println(c.getType() + " goes " + c.getSound());  }  
-}``` 
+}
+``` 
 
 *Now add the following Farm class to complete the farm and test all your animals. Make sure that it isn't inside any the curly braces of the other classes.*
 
@@ -64,7 +66,8 @@ class Farm  {
        System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound());       
       }    
     } 
-}``` 
+}
+``` 
 
 *Now, change your code in `setup()` to create an new instance of type `Farm` and call its `animalSounds` function.*
 It turns out that the chick is a little confused. Sometimes it makes one sound, when she is feeling childish, and another when she is feeling more grown up. Her two sounds are "cheep" and "cluck".
@@ -89,7 +92,8 @@ The final Farm code to exercise all your modifications is shown here:
          System.out.println( aBunchOfAnimals[nI].getType() + " goes " + aBunchOfAnimals[nI].getSound() );       }       
          System.out.println( "The cow is known as " + ((NamedCow)aBunchOfAnimals[0]).getName() );    
       } 
-}``` 
+}
+``` 
 
 What Did You Just Do?
 ---------------------
