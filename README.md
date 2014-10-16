@@ -13,10 +13,10 @@ Defining an interface
 ---------------------
 Old MacDonald had a farm that had several types of animals. Every animal shared certain characteristics: they had a type (such as cow, chick or pig) and each made a sound (moo, cluck or oink). An interface defines those things required to be an animal on the farm.
 
-  `interface Animal {    
-    public String getSound();        
-    public String getType(); 
-  }`   
+`interface Animal {    
+  public String getSound();        
+  public String getType(); 
+}`   
  
 *Add the Animal interface to your OldMacDonald program after the closing curly brace of the `setup()` function.
 Run the program to make sure it compiles and runs.*
