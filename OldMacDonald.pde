@@ -18,7 +18,7 @@ interface Animal {
 	public void walk(); 
 }
 
-class Farm  {     
+class Farm {     
 	private Animal[] aBunchOfAnimals = new Animal[10];    
 	public Farm(){
 		//fills animal randomly
@@ -35,66 +35,61 @@ class Farm  {
 	}
 }
 
-class Cow implements Animal{
+class originalAnimal implements Animal{
 	private float x;
 	private float y;
 	private int theWidth;
 	private int theHeight;
 	private Poop[] poopHolder;
 	private int poopCount;
+	private int waitTime;
+	private float newX;
+	private float newY;
+	private int theSecond;
+	public Animal(){
+		x=(int)(Math.random()*300 + 100);
+		y=(int)(Math.random()*300 + 100);
+		poopHolder = new Poop[8];
+		poopCount = 0;
+	}
+
+	public void walk(){
+		int chance = (int)(Math.random()*2);
+		if(chance == 0){
+			waitTime = (int)(Math.random()*5+3)
+		} else {
+		}
+	}
+	public void makePoop(){
+
+	}	
+}
+
+class Cow extends originalAnimal{
 	public Cow(){
 		x=(int)(Math.random()*300 + 100);
 		y=(int)(Math.random()*300 + 100);
 		poopHolder = new Poop[8];
 		poopCount = 0;
 	}
-	public void walk(){
 
-	}
-	public void makePoop(){
-
-	}
 }
 
-class Pig implements Animal{
-	private float x;
-	private float y;
-	private int theWidth;
-	private int theHeight;
-	private Poop[] poopHolder;
-	private int poopCount;
+class Pig extends originalAnimal{
 	public Pig(){
 		x=(int)(Math.random()*300 + 100);
 		y=(int)(Math.random()*300 + 100);
 		poopHolder = new Poop[8];
 		poopCount = 0;
 	}
-	public void walk(){
-
-	}
-	public void makePoop(){
-
-	}
 }
 
-class Chicken implements Animal{
-	private float x;
-	private float y;
-	private int theWidth;
-	private int theHeight;
-	private Poop[] poopHolder;
-	private int poopCount;
+class Chicken extends originalAnimal{
 	public Chicken(){
 		x=(int)(Math.random()*300 + 100);
 		y=(int)(Math.random()*300 + 100);
 		poopHolder = new Poop[8];
 		poopCount = 0;
-	}
-	public void walk(){
-
-	}
-	public void makePoop(){
-
 	}
 }
 
