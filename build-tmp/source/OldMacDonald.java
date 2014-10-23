@@ -3,6 +3,8 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import java.util.Arrays; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -15,102 +17,154 @@ import java.io.IOException;
 public class OldMacDonald extends PApplet {
 
 /* @pjs preload="chicken.png; cow.png; pig.png; poop.png; grass.png;*/
-PImage cow;
-PImage pig;
-PImage chicken;
-PImage poop;
+
+
+PImage aCow;
+PImage aPig;
+PImage aChicken;
+PImage aPoop;
 PImage grass;
+Farm theFarm;
+Poop[] poopHolder;
+int poopCount;
 public void setup(){
-	size(1000,1000);
-	cow = loadImage("cow.png");
-	pig = loadImage("pig.png");
-	chicken = loadImage("chicken.png");
-	poop = loadImage("poop.png");
+	size(800,800);
+	aCow = loadImage("cow.png");
+	aPig = loadImage("pig.png");
+	aChicken = loadImage("chicken.png");
+	aPoop = loadImage("poop.png");
 	grass = loadImage("grass.png");
+	theFarm = new Farm();
+	poopHolder = new Poop[500];
+	poopCount=0;
 }
 
 interface Animal {    
 	public void makePoop();        
-	public void walk(); 
+	public void action(); 
 }
 
-class Farm  {     
+class Farm {     
 	private Animal[] aBunchOfAnimals = new Animal[10];    
 	public Farm(){
 		//fills animal randomly
-		for(Animal animal : aBunchOfAnimals){
+		for(int i = 0; i<aBunchOfAnimals.length; i++){
 			int num = (int) (Math.random()*3);
 			if(num == 0){
-				animal = new Cow();
+				aBunchOfAnimals[i] = new Cow();
 			} else if(num==1){
-				animal = new Pig();
+				aBunchOfAnimals[i] = new Pig();
 			} else {
-				animal = new Chicken();
+				aBunchOfAnimals[i] = new Chicken();
 			}
+		}
+	}
+	public void run(){
+		for(Poop thePoop: poopHolder){
+			if(thePoop!=null){
+				image(aPoop,thePoop.x,thePoop.y, thePoop.theWidth, thePoop.theHeight);
+			}
+		}
+		for(Animal animal: aBunchOfAnimals){
+			animal.action();
 		}
 	}
 }
 
-class Cow implements Animal{
-	private float x;
-	private float y;
-	private int theWidth;
-	private int theHeight;
-	private Poop[] poopHolder;
-	private int poopCount;
+abstract class originalAnimal implements Animal{
+	protected float x;
+	protected float y;
+	protected int theWidth;
+	protected int theHeight;
+	protected int waitTime;
+	protected float newX;
+	protected float newY;
+	protected int theSecond;
+	public originalAnimal(){
+		x=(int)(Math.random()*300 + 100);
+		y=(int)(Math.random()*300 + 100);
+	}
+
+	public void action(){
+		show();
+		int chance = (int)(Math.random()*2);
+		if(x==newX && y==newY && waitTime<=0){
+			if(chance == 0){
+				waitTime = (int)(Math.random()*5+3);
+				theSecond = second();
+				makePoop();
+			} else {
+				newX = (int)(Math.random()*600+100);
+				newY = (int)(Math.random()*600+100);
+			}
+		} else if(x!=newX || y!=newY){
+			if(x<newX){
+				x++;
+			}
+			if(x>newX){
+				x--;
+			}
+			if(y<newY){
+				y++;
+			}
+			if(y>newY){
+				y--;
+			}
+		} else if(theSecond != second()){
+			waitTime--;
+			theSecond=second();
+		}
+	}
+	public void makePoop(){
+		if(poopCount>=poopHolder.length-1){
+			poopCount = 0;
+		}
+		poopHolder[poopCount] = new Poop(this.x, this.y);
+		poopCount++;
+	}
+	protected abstract void show();
+}
+
+class Cow extends originalAnimal{
 	public Cow(){
-		x=(int)(Math.random()*300 + 100);
-		y=(int)(Math.random()*300 + 100);
-		poopHolder = new Poop[8];
-		poopCount = 0;
+		x=(int)(Math.random()*600 + 100);
+		y=(int)(Math.random()*600 + 100);
+		theWidth = 100;
+		theHeight = 120;
+		newX = (int)(Math.random()*600+100);
+		newY = (int)(Math.random()*600+100);
 	}
-	public void walk(){
+	protected void show(){
+		image(aCow,x,y, theWidth, theHeight);
+	}
 
-	}
-	public void makePoop(){
-
-	}
 }
 
-class Pig implements Animal{
-	private float x;
-	private float y;
-	private int theWidth;
-	private int theHeight;
-	private Poop[] poopHolder;
-	private int poopCount;
+class Pig extends originalAnimal{
 	public Pig(){
-		x=(int)(Math.random()*300 + 100);
-		y=(int)(Math.random()*300 + 100);
-		poopHolder = new Poop[8];
-		poopCount = 0;
+		x=(int)(Math.random()*600 + 100);
+		y=(int)(Math.random()*600 + 100);
+		newX = (int)(Math.random()*600+100);
+		newY = (int)(Math.random()*600+100);
+		theWidth = 100;
+		theHeight = 120;
 	}
-	public void walk(){
-
-	}
-	public void makePoop(){
-
+	protected void show(){
+		image(aPig,x,y, theWidth, theHeight);
 	}
 }
 
-class Chicken implements Animal{
-	private float x;
-	private float y;
-	private int theWidth;
-	private int theHeight;
-	private Poop[] poopHolder;
-	private int poopCount;
+class Chicken extends originalAnimal{
 	public Chicken(){
-		x=(int)(Math.random()*300 + 100);
-		y=(int)(Math.random()*300 + 100);
-		poopHolder = new Poop[8];
-		poopCount = 0;
+		x=(int)(Math.random()*600 + 100);
+		y=(int)(Math.random()*600 + 100);
+		newX = (int)(Math.random()*600+100);
+		newY = (int)(Math.random()*600+100);
+		theWidth = 100;
+		theHeight = 120;
 	}
-	public void walk(){
-
-	}
-	public void makePoop(){
-
+	protected void show(){
+		image(aChicken,x,y, theWidth, theHeight);
 	}
 }
 
@@ -119,13 +173,19 @@ class Poop{
 	private float y;
 	private int theWidth;
 	private int theHeight;
-	Poop(int x, int y){
+	public Poop(float x, float y){
 		this.x=x;
 		this.y=y;
+		theWidth = 50;
+		theHeight = 60;
 	}
 }
 public void draw(){
+	background(0xff00cc00);
+	imageMode(CORNER);
 	image(grass, 0, 0, 1024, 1024);
+	imageMode(CENTER);
+	theFarm.run();
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "OldMacDonald" };

@@ -17,7 +17,7 @@ void setup(){
 	aPoop = loadImage("poop.png");
 	grass = loadImage("grass.png");
 	theFarm = new Farm();
-	poopHolder = new Poop[100];
+	poopHolder = new Poop[500];
 	poopCount=0;
 }
 
@@ -53,7 +53,7 @@ class Farm {
 	}
 }
 
-class originalAnimal implements Animal{
+abstract class originalAnimal implements Animal{
 	protected float x;
 	protected float y;
 	protected int theWidth;
@@ -104,9 +104,7 @@ class originalAnimal implements Animal{
 		poopHolder[poopCount] = new Poop(this.x, this.y);
 		poopCount++;
 	}
-	protected void show(){
-		System.out.println("Holder!");
-	}
+	protected abstract void show();
 }
 
 class Cow extends originalAnimal{
