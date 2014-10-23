@@ -62,10 +62,6 @@ abstract class originalAnimal implements Animal{
 	protected float newX;
 	protected float newY;
 	protected int theSecond;
-	public originalAnimal(){
-		x=(int)(Math.random()*300 + 100);
-		y=(int)(Math.random()*300 + 100);
-	}
 
 	public void action(){
 		show();
