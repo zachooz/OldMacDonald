@@ -165,6 +165,7 @@ class Poop{
 	}
 }
 void draw(){
+	background(#00cc00);
 	imageMode(CORNER);
 	image(grass, 0, 0, 1024, 1024);
 	imageMode(CENTER);
