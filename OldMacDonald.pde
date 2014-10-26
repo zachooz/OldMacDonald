@@ -1,4 +1,4 @@
-/* @pjs preload="chicken.png; cow.png; pig.png; poop.png; grass.png;*/
+/* @pjs preload="chicken.png, cow.png, pig.png, poop.png, grass.png;*/
 import java.util.Arrays;
 
 PImage aCow;
